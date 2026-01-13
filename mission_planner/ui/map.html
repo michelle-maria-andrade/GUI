@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Offline Map</title>
+  <link rel="stylesheet" href="leaflet.css" />
+  <script src="leaflet.js"></script>
+
+  <style>
+    html, body, #map { height: 100%; margin: 0; background: #0d0d0d; }
+  </style>
+</head>
+<body>
+<div id="map"></div>
+
+<script>
+  const map = L.map('map', {
+    zoomControl: true,
+    attributionControl: false,
+    minZoom: 0,
+    maxZoom: 18
+  }).setView([0, 0], 2);   // 🌍 ALWAYS EXISTS
+
+  L.tileLayer('http://127.0.0.1:8000/{z}/{x}/{y}', {
+    minZoom: 0,
+    maxZoom: 18,
+    tileSize: 256,
+    noWrap: true
+  }).addTo(map);
+
+  window.setCenter = function(lat, lon) {
+    map.setView([lat, lon], map.getZoom());
+  };
+</script>
+
+</body>
+</html>

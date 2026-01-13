@@ -9,6 +9,7 @@ def main() -> int:
 
     from .ui.main_window import MissionPlannerWindow
 
+    
     app = QApplication(sys.argv)
     app.setApplicationName("manasPlanner")
 
